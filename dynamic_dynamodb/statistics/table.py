@@ -4,10 +4,10 @@ from datetime import datetime, timedelta
 
 from boto.exception import JSONResponseError, BotoServerError
 
-from dynamic_dynamodb.core import dynamodb
-from dynamic_dynamodb.log_handler import LOGGER as logger
-from dynamic_dynamodb.core.cloudwatch import (
+from dynamic_dynamodb.aws import dynamodb
+from dynamic_dynamodb.aws.cloudwatch import (
     CLOUDWATCH_CONNECTION as cloudwatch_connection)
+from dynamic_dynamodb.log_handler import LOGGER as logger
 
 
 def get_consumed_read_units_percent(table_name, time_frame=300):
