@@ -570,9 +570,7 @@ def __get_connection_dynamodb(retries=3):
                     'Authenticating to DynamoDB using EC2 instance profile')
                 metadata = get_instance_metadata(timeout=1, num_retries=1)
                 region = metadata['placement']['availability-zone'][:-1]
-                connection = dynamodb2.connect_to_region(
-                    region,
-                    profile_name=metadata['iam']['info'][u'InstanceProfileArn'])
+                connection = dynamodb2.connect_to_region(region)
             except KeyError:
                 logger.debug(
                     'Authenticating to DynamoDB using '

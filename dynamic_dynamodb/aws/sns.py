@@ -101,9 +101,7 @@ def __get_connection_SNS():
                     'Authenticating to SNS using EC2 instance profile')
                 metadata = get_instance_metadata(timeout=1, num_retries=1)
                 region = metadata['placement']['availability-zone'][:-1]
-                connection = sns.connect_to_region(
-                    region,
-                    profile_name=metadata['iam']['info'][u'InstanceProfileArn'])
+                connection = sns.connect_to_region(region)
             except KeyError:
                 logger.debug(
                     'Authenticating to SNS using '
